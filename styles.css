@@ -109,13 +109,17 @@ section { padding-block: clamp(64px, 10vw, 120px); }
 .js.step-3 .typing { display: none; }
 .js.step-3 .bubble-out { opacity: 1; transform: none; }
 
+/* Tira de credenciais: uma linha, divisórias verticais */
 .proof {
-  list-style: none; margin: clamp(56px, 8vw, 96px) auto 0; padding-block: 28px;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
-  border-top: 1px solid rgba(200, 149, 60, .25);
-  color: rgba(246, 238, 230, .7); font-size: .95rem;
+  list-style: none; margin: clamp(56px, 8vw, 96px) auto 0; padding-block: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-block: 1px solid rgba(200, 149, 60, .3);
+  color: rgba(246, 238, 230, .7); font-size: .95rem; line-height: 1.3; text-align: center;
 }
-.proof strong { display: block; font: 400 1.9rem/1.1 var(--serif); color: var(--gold); margin-bottom: 4px; }
+.proof.wrap { padding-inline: 0; width: calc(100% - 48px); max-width: 1112px; }
+.proof li { padding: 26px 12px; }
+.proof li + li { border-left: 1px solid rgba(200, 149, 60, .3); }
+.proof strong { display: block; font: 400 1.9rem/1.1 var(--serif); color: var(--gold); margin-bottom: 6px; white-space: nowrap; }
 
 /* Galeria */
 .gallery { background: #fff; }
@@ -247,12 +251,15 @@ details p { padding: 0 44px 24px 0; color: var(--muted); max-width: 64ch; }
   .nav-links { display: none; }
   .hero-grid, .breeder-grid, .included-grid, .services-grid { grid-template-columns: 1fr; }
   .hero-chat { order: 0; }
-  .proof { grid-template-columns: repeat(2, 1fr); }
   .step-list { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
   .breeder-photo { max-width: 480px; }
 }
 @media (max-width: 640px) {
+  .proof.wrap { width: calc(100% - 36px); padding-inline: 0; font-size: .72rem; }
+  .proof li { padding: 16px 4px; }
+  .proof strong { font-size: clamp(1rem, 4.8vw, 1.35rem); margin-bottom: 4px; }
+  .proof .sm-hide { display: none; }
   body { font-size: 1rem; }
   .wrap { padding-inline: 18px; }
   .brand span { font-size: .95rem; }
