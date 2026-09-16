@@ -6,6 +6,12 @@ document.querySelectorAll(".wa").forEach((el) => {
   el.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
   el.target = "_blank";
   el.rel = "noopener";
+  // Mede qual chamada gerou a conversa (GTM e Meta Pixel, se instalados)
+  el.addEventListener("click", () => {
+    const cta = el.dataset.cta || "sem-nome";
+    (window.dataLayer = window.dataLayer || []).push({ event: "whatsapp_click", cta });
+    if (typeof window.fbq === "function") window.fbq("track", "Contact", { content_name: cta });
+  });
 });
 
 // Conversa do hero: pergunta, digitando, resposta
